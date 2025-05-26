@@ -1,10 +1,7 @@
-import { cp } from "fs";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import firebird from "node-firebird"
-import { setTimeout } from "timers/promises";
 
-var dboptions : firebird.Options;
+let dboptions : firebird.Options;
 
 dboptions = {
 
@@ -47,7 +44,7 @@ function getConnection(): Promise<firebird.Database> {
     });
   }
 
-function QueryClientes(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<any> {
+/*function QueryClientes(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<any> {
     return new Promise((resolve, reject) => {
       let sql = '';
       let params: string[] = [];
@@ -72,9 +69,9 @@ function QueryClientes(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promi
         resolve(result);
       });
     });
-}
+}*/
 
-function QueryClienteCodigo(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<any> {
+function QueryClienteCodigo(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<{}> {
   return new Promise((resolve, reject) => {
     let sql = '';
     let params: string[] = [];
@@ -103,7 +100,6 @@ function gerarCodProt(sigla: string, dataExp: Date): string {
   const day = dataExp.getDate().toString().padStart(2, '0');
   const month = (dataExp.getMonth() + 1).toString().padStart(2, '0');
   const year = dataExp.getFullYear().toString().slice(-2);
-  const expira = `${day}/${month}/${year}`;
 
   const xdt =
     (parseInt(month) + vsigla + 2).toString().padStart(2, '0') +
@@ -136,10 +132,10 @@ function gerarCodProt(sigla: string, dataExp: Date): string {
 
   const zcal = parseInt(xcal.substring(0, 2));
 
-  const finalKey =
+  /*const finalKey =
     (parseInt(xcal.substring(4, 6)) - 1 - vsigla).toString().padStart(2, '0') +
     (zcal - 2 - vsigla).toString().padStart(2, '0') +
-    (parseInt(xcal.substring(2, 4)) - vsigla).toString().padStart(2, '0');
+    (parseInt(xcal.substring(2, 4)) - vsigla).toString().padStart(2, '0');*/
 
   return mse;
 }
