@@ -124,9 +124,9 @@ function gerarCodProt(sigla: string, dataExp: Date): string {
     mse.substring(6, 8) +
     letras.charAt(msigla.charCodeAt(2) + somatorioData - 1);
 
-  const cse = mse.substring(0, 3) + mse.substring(4, 7) + mse.substring(8, 10);
+  //const cse = mse.substring(0, 3) + mse.substring(4, 7) + mse.substring(8, 10);
 
-  const cseInt = parseInt(cse);
+  //const cseInt = parseInt(cse);
   //const xcal = Math.floor(cseInt / (77 + soma_extra)).toString().padStart(6, '0');
 
   //const zcal = parseInt(xcal.substring(0, 2));
