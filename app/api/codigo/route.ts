@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import firebird from "node-firebird"
 
-let dboptions : firebird.Options;
-
-dboptions = {
+const dboptions : firebird.Options = {
 
     host : process.env.host,
     port : Number(process.env.fbport),
@@ -71,8 +69,8 @@ function getConnection(): Promise<firebird.Database> {
     });
 }*/
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-function QueryClienteCodigo(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<{}> {
+// eslint-disable-next-line
+function QueryClienteCodigo(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<any> {
   return new Promise((resolve, reject) => {
     let sql = '';
     let params: string[] = [];
@@ -129,7 +127,7 @@ function gerarCodProt(sigla: string, dataExp: Date): string {
   const cse = mse.substring(0, 3) + mse.substring(4, 7) + mse.substring(8, 10);
 
   const cseInt = parseInt(cse);
-  const xcal = Math.floor(cseInt / (77 + soma_extra)).toString().padStart(6, '0');
+  //const xcal = Math.floor(cseInt / (77 + soma_extra)).toString().padStart(6, '0');
 
   //const zcal = parseInt(xcal.substring(0, 2));
 
