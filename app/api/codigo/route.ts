@@ -71,6 +71,7 @@ function getConnection(): Promise<firebird.Database> {
     });
 }*/
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 function QueryClienteCodigo(db: firebird.Database, [sigla = '', cpfcnpj = '']): Promise<{}> {
   return new Promise((resolve, reject) => {
     let sql = '';
@@ -130,7 +131,7 @@ function gerarCodProt(sigla: string, dataExp: Date): string {
   const cseInt = parseInt(cse);
   const xcal = Math.floor(cseInt / (77 + soma_extra)).toString().padStart(6, '0');
 
-  const zcal = parseInt(xcal.substring(0, 2));
+  //const zcal = parseInt(xcal.substring(0, 2));
 
   /*const finalKey =
     (parseInt(xcal.substring(4, 6)) - 1 - vsigla).toString().padStart(2, '0') +
