@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
   }
   else if (cliente[0]['diasatraso'] == 1 || cliente[0]['diasatraso'] == 2) {
     const today = new Date();
-    if (today.getDay() == 0 || today.getDay() == 1)
+    if (!(today.getDay() == 0 || today.getDay() == 1))
       {
         return NextResponse.json('Cliente em atraso!');
       }
