@@ -18,19 +18,26 @@ const dboptions : firebird.Options = {
 };
 
 export async function GET(req: NextRequest) {
-        const {searchParams} = new URL(req.url);
-        const sigla = searchParams.get('sigla') ?? '';
-        const cpfcnpj = searchParams.get('cpfcnpj') ?? '';
-        const params: [string, string] = [sigla, cpfcnpj];
-        const dataExp = getFutureBusinessDate();
-        const db = await getConnection();
-        const cliente = await QueryClienteCodigo(db, params);
-        const siglaCliente = cliente[0]['sigla'];
-        if (cliente[0]['diasatraso'] > 0){
-          return NextResponse.json('Cliente em atraso!');
-        }
-        const CodProt = gerarCodProt(siglaCliente, dataExp);
-        return NextResponse.json(CodProt);
+  const { searchParams } = new URL(req.url);
+  const sigla = searchParams.get('sigla') ?? '';
+  const cpfcnpj = searchParams.get('cpfcnpj') ?? '';
+  const params: [string, string] = [sigla, cpfcnpj];
+  const dataExp = getFutureBusinessDate();
+  const db = await getConnection();
+  const cliente = await QueryClienteCodigo(db, params);
+  const siglaCliente = cliente[0]['sigla'];
+  if (cliente[0]['diasatraso'] > 2) {
+    return NextResponse.json('Cliente em atraso!');
+  }
+  else if (cliente[0]['diasatraso'] == 1 || cliente[0]['diasatraso'] == 2) {
+    const today = new Date();
+    if (today.getDay() == 0 || today.getDay() == 1)
+      {
+        return NextResponse.json('Cliente em atraso!');
+      }
+  }
+  const CodProt = gerarCodProt(siglaCliente, dataExp);
+  return NextResponse.json(CodProt);
 }
 
 function getConnection(): Promise<firebird.Database> {
