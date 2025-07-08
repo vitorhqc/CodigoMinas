@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import Spinner from "./components/spinner";
 import ConfirmationModal from "./components/ConfirmationModal";
+import Instrucoes from "./components/Instrucoes";
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const [isloading, setIsloading] = useState(false);
   const [isModalOpen,setIsModalOpen] = useState(false);
+  const [instrucoesOpen, setInstrucoesopen] = useState(true);
 
   useEffect(() => {
     if (showbubble && aRef.current) {
@@ -30,15 +32,20 @@ export default function Home() {
     setIsModalOpen(false);
   }
 
+  function handleInstrucoes(){
+    setInstrucoesopen(false);
+  }
+
   return (
-    <div className="flex w-full max-w-full h-dvh max-h-screen flex-wrap justify-items-center items-center justify-center content-center ">
-      <main className="flex flex-col h-full gap-[32px] row-start-2 justify-items-center items-center justify-center content-center">
+    <div className="flex w-full max-w-full h-dvh max-h-screen bg-white flex-wrap justify-items-center items-center justify-center content-center ">
+      <Instrucoes onConfirm={handleInstrucoes} isOpen={instrucoesOpen}></Instrucoes>
+      <main className="flex flex-col h-full gap-[32px] bg-white row-start-2 justify-items-center items-center justify-center content-center">
         <Image alt="LogoMinas"
           src={"https://firebasestorage.googleapis.com/v0/b/checklist-cbc61.appspot.com/o/LOGO.bmp?alt=media&token=1550beb3-d8f7-4e53-827e-d9b096202e51"}
           width={500}
           height={300}>
         </Image>
-        <div className="grid grid-cols-2 items-center gap-[32px]">
+        <div className="grid grid-cols-2 items-center bg-white gap-[32px]">
           <input placeholder="Digite a SIGLA" className="text-center rounded-md border-1 border-black" onChange={
             (e) => {
               e.currentTarget.value = e.currentTarget.value.toUpperCase();
@@ -59,7 +66,7 @@ export default function Home() {
             }}>
           </input>
         </div>
-        <div className="flex flex-col cols-1 justify-items-center items-center justify-center content-center gap-2 mb-52">
+        <div className="flex flex-col cols-1 bg-white justify-items-center items-center justify-center content-center gap-2 mb-52">
           <button className={`w-40 text-center bg-stone-400 rounded-md text-white font-normal hover:font-bold `} onClick={!isloading ? () => buscarCliente(sigla, cpfcnpj) : () => {}}>Gerar código</button>
           {codigook && <input className={`w-50 text-center rounded-md border-1 border-black bg-red-200 $`} value={codigo} readOnly></input>}
           {!codigook && isloading && <div className="gap-4">
