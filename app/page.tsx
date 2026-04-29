@@ -41,7 +41,7 @@ export default function Home() {
       <Instrucoes onConfirm={handleInstrucoes} isOpen={instrucoesOpen}></Instrucoes>
       <main className="flex flex-col h-full gap-[32px] bg-white row-start-2 justify-items-center items-center justify-center content-center">
         <Image alt="LogoMinas"
-          src={"https://firebasestorage.googleapis.com/v0/b/checklist-cbc61.appspot.com/o/LOGO.bmp?alt=media&token=1550beb3-d8f7-4e53-827e-d9b096202e51"}
+          src={"https://res.cloudinary.com/dxmpiopqx/image/upload/v1777467440/LOGOMsColor_mpi686.png"}
           width={500}
           height={300}>
         </Image>
@@ -78,7 +78,7 @@ export default function Home() {
         <a className="text-sm group underline text-blue-500" href="#" ref={aRef} onMouseEnter={() => setShowbubble(!showbubble)} onMouseLeave={() => setShowbubble(!showbubble)}>Onde consigo essas informaçoes?
           {showbubble && <div className={`rounded-md border-1 border-stone-500 bg-stone-300 text-justify`} style={{ top: `${position.top}px`, left: `${position.left}px`, position: 'absolute' }}>
             <Image alt="ImagemSigla"
-              src={"https://firebasestorage.googleapis.com/v0/b/checklist-cbc61.appspot.com/o/ImagemCodigo.jpeg?alt=media&token=2ab512f5-a2e1-4ed6-8c3f-efbd9d19a11c"}
+              src={"https://res.cloudinary.com/dxmpiopqx/image/upload/v1762973601/u2uok3ojzxra3scjf39d.jpg"}
               width={300}
               height={150}
               className="rounded-md">

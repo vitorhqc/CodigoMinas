@@ -14,7 +14,7 @@ export default function ConfirmationModal ({isOpen, onConfirm}:InstrucoesModalPr
             <div className="bg-white flex flex-col rounded-lg items-center justify-center shadow-lg p-2 w-full h-1/2 max-w-md">
                 <div className={`relative rounded-md w-full h-1/2 bg-white items-center justify-center text-justify`}>
                     <Image alt="ImagemSigla"
-                        src={"https://firebasestorage.googleapis.com/v0/b/checklist-cbc61.appspot.com/o/ImagemCodigo.jpeg?alt=media&token=2ab512f5-a2e1-4ed6-8c3f-efbd9d19a11c"}
+                        src={"https://res.cloudinary.com/dxmpiopqx/image/upload/v1762973601/u2uok3ojzxra3scjf39d.jpg"}
                         fill={true}
                         className="rounded-md">
                     </Image>
