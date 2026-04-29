@@ -27,13 +27,13 @@ export async function GET(req: NextRequest) {
   const cliente = await QueryClienteCodigo(db, params);
   const siglaCliente = cliente[0]['sigla'];
   if (cliente[0]['diasatraso'] > 2) {
-    return NextResponse.json('Cliente em atraso!');
+    return NextResponse.json('Cliente não permitido!');
   }
   else if (cliente[0]['diasatraso'] == 1 || cliente[0]['diasatraso'] == 2) {
     const today = new Date();
     if (!(today.getDay() == 0 || today.getDay() == 1))
       {
-        return NextResponse.json('Cliente em atraso!');
+        return NextResponse.json('Cliente não permitido!');
       }
   }
   const CodProt = gerarCodProt(siglaCliente, dataExp);
